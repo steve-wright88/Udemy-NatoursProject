@@ -1,0 +1,72 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* simple reset using universal selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* this stops box borders and padding being added to the total width or height that we specify for a box*/
+}
+/* tergeting the body element styles works better for inheritance */
+body {
+  font-family: "Lato", sans-serif; /* set the dont to 'Lato' or sans-serif if Lato isn't available */
+  font-weight: 400; /* this is one of the options available on the Google font we've included in the HTML head*/
+  font-size: 16px;
+  line-height: 1.7; /* this sets line-height to 1.7 times bigger than the defualt line-height */
+  color: #3d3d3d;
+  padding: 30px; /* adds a 30px padding to the eintire body of the web page */
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.7),
+      rgba(40, 180, 133, 0.7)
+    ),
+    url("../img/hero.jpg");
+  background-size: cover; /* cover fits the image inside the element */
+  background-position: top; /* this ensures the image always stays at the top of the element - so when resizing the top remains at the top */
+  position: relative; /* we've set this to relative as it's the parent element to our div containing the logo */
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px; /* this is relative to the parent element, the parent element needs the style position: relative; */
+  left: 40px; /* this is relative to the parent element, the parent element needs the style position: relative; */
+}
+
+.logo {
+  height: 35px; /* setting the height and not the width lets the browser figure out the width to keep the proportions of the image*/
+}
+.text-box {
+  position: absolute;
+  top: 40%; /* this moves the top of the current element and places it 50% from the top of its parent element | we've set it tp 40% here to make it easier on the eye with the wedge we've got in place */
+  left: 50%; /* this moves the left of the current element and places it 50% from the left of its parent element */
+  /* background-color: red; */
+  transform: translate(-50%, -50%); /* this moves the element back and up 50% to counter the issues with top and left 50%*/
+}
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 35px;
+}
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+}
