@@ -22,7 +22,6 @@ body {
   color: #3d3d3d;
   padding: 30px; /* adds a 30px padding to the eintire body of the web page */
 }
-
 .header {
   height: 95vh;
   background-image: linear-gradient(
@@ -37,13 +36,11 @@ body {
 
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
-
 .logo-box {
   position: absolute;
   top: 40px; /* this is relative to the parent element, the parent element needs the style position: relative; */
   left: 40px; /* this is relative to the parent element, the parent element needs the style position: relative; */
 }
-
 .logo {
   height: 35px; /* setting the height and not the width lets the browser figure out the width to keep the proportions of the image*/
 }
@@ -52,21 +49,112 @@ body {
   top: 40%; /* this moves the top of the current element and places it 50% from the top of its parent element | we've set it tp 40% here to make it easier on the eye with the wedge we've got in place */
   left: 50%; /* this moves the left of the current element and places it 50% from the left of its parent element */
   /* background-color: red; */
-  transform: translate(-50%, -50%); /* this moves the element back and up 50% to counter the issues with top and left 50%*/
+  transform: translate(-50%, -50%); /* this moves the element back and up 50% to counter the issues with top and left 50% */
+  text-align: center;
 }
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  margin-bottom: 60px;
+
+  backface-visibility: hidden; /* fixes shaking issue with some animations | don't use when background moves as part of the animation */
 }
 .heading-primary-main {
   display: block;
   font-size: 60px;
   font-weight: 700;
   letter-spacing: 35px;
+
+  animation: moveInLeft 1.5s ease-out;
 }
 .heading-primary-sub {
   display: block;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 17.4px;
+
+  animation: moveInRight 1.5s ease-out;
+}
+@keyframes moveInLeft { /* you can name this what you like */
+  0% { /* start at 0%, the start of the animation */
+    opacity: 0; /* start the animation invisible */
+    transform: translateX(-100px); /*translateX to move it along the X (side) axis | a negative value to start it moving from the left */
+  }
+  80% { /* end at 100%, the end of the animation s*/
+    opacity: 1; /* by the end the animation visible */
+    transform: translate(10px); /* tanslate 0 to move it back to it's original position */
+  }
+  100% { /* end at 100%, the end of the animation s*/
+    opacity: 1; /* by the end the animation visible */
+    transform: translate(0); /* tanslate 0 to move it back to it's original position */
+  }
+}
+@keyframes moveInRight { /* you can name this what you like */
+  0% { /* start at 0%, the start of the animation */
+    opacity: 0; /* start the animation invisible */
+    transform: translateX(100px); /*translateX to move it along the X (side) axis | a negative value to start it moving from the left */
+  }
+  80% { /* end at 100%, the end of the animation s*/
+    opacity: 1; /* by the end the animation visible */
+    transform: translate(-10px); /* tanslate 0 to move it back to it's original position */
+  }
+  100% { /* end at 100%, the end of the animation s*/
+    opacity: 1; /* by the end the animation visible */
+    transform: translate(0); /* tanslate 0 to move it back to it's original position */
+  }
+}
+@keyFrames moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.btn:link,  /* :link is a pseudo class | a state for a tags */
+.btn:visited { /* :visited is a pseudo class after a link has been clicked by the user | here we want it to stay the same after being clicked */
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block; /* always add this if you want to give, height, width or padding to an element */
+  border-radius: 100px;
+  transition: all .2s;
+  position: relative;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 20px rgba(0,0,0,0.4); /* x shadow, y shadow, blur, colour */
+}
+.btn:active { /* the :active pseudo class is when the element is clicked */
+  transform: translateY(-1px); /* this isn't relateed to the hover state, it's related to the initial state, so -1px is less than -3px so it moves down */
+  box-shadow: 0 1px 10px rgba(0,0,0,0.4); /* x shadow, y shadow, blur, colour*/
+}
+.btn-white {
+  background-color: #fff;
+  color: #3d3d3d;
+}
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute; /* for this to work we need to add 'position: relative;' to the button */
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+.btn-white::after {
+  background-color: #FFF;
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; /* this is the best way to fade things out */
+}
+.btn-animated {
+  animation: moveInBottom 1.5s ease-out .75s;
+  animation-fill-mode: backwards;
 }
