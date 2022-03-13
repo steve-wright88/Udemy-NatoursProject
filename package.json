@@ -1,0 +1,25 @@
+{
+  "name": "natours-project",
+  "version": "1.0.0",
+  "description": "Landing page for Natours",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steve-wright88/Udemy-NatoursProject.git"
+  },
+  "author": "Steve Wright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steve-wright88/Udemy-NatoursProject/issues"
+  },
+  "homepage": "https://github.com/steve-wright88/Udemy-NatoursProject#readme",
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}

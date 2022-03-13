@@ -1,0 +1,33 @@
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.7),
+      rgba($color-primary-dark, 0.7)
+    ),
+    url("../img/hero.jpg");
+  background-size: cover; // cover fits the image inside the element
+  background-position: top; // this ensures the image always stays at the top of the element - so when resizing the top remains at the top
+  position: relative; // we've set this to relative as it's the parent element to our div containing the logo
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem; // this is relative to the parent element, the parent element needs the style position: relative;
+    left: 4rem; // this is relative to the parent element, the parent element needs the style position: relative;
+  }
+  &__logo {
+    height: 3.5rem; // setting the height and not the width lets the browser figure out the width to keep the proportions of the image
+  }
+  &__text-box {
+    position: absolute;
+    top: 40%; // this moves the top of the current element and places it 50% from the top of its parent element | we've set it tp 40% here to make it easier on the eye with the wedge we've got in place
+    left: 50%; // this moves the left of the current element and places it 50% from the left of its parent element
+    transform: translate(
+      -50%,
+      -50%
+    ); // this moves the element back and up 50% to counter the issues with top and left 50%
+    text-align: center;
+  }
+}

@@ -1,0 +1,59 @@
+// My animations
+@keyframes moveInLeft {
+  // you can name this what you like
+  0% {
+    // start at 0%, the start of the animation
+    opacity: 0; // start the animation invisible
+    transform: translateX(
+      -10rem
+    ); //translateX to move it along the X (side) axis | a negative value to start it moving from the left
+  }
+  80% {
+    // end at 100%, the end of the animation s
+    opacity: 1; // by the end the animation visible
+    transform: translate(
+      1rem
+    ); // tanslate 0 to move it back to it's original position
+  }
+  100% {
+    // end at 100%, the end of the animation s
+    opacity: 1; // by the end the animation visible
+    transform: translate(
+      0
+    ); // tanslate 0 to move it back to it's original position
+  }
+}
+@keyframes moveInRight {
+  // you can name this what you like
+  0% {
+    // start at 0%, the start of the animation
+    opacity: 0; // start the animation invisible
+    transform: translateX(
+      10rem
+    ); //translateX to move it along the X (side) axis | a negative value to start it moving from the left
+  }
+  80% {
+    // end at 100%, the end of the animation s
+    opacity: 1; // by the end the animation visible
+    transform: translate(
+      -1rem
+    ); // tanslate 0 to move it back to it's original position
+  }
+  100% {
+    // end at 100%, the end of the animation s
+    opacity: 1; // by the end the animation visible
+    transform: translate(
+      0
+    ); // tanslate 0 to move it back to it's original position
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,160 +1,221 @@
-/*
-COLORS:
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    opacity: 1;
+    transform: translate(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    opacity: 1;
+    transform: translate(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-*/
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
 
-/* simple reset using universal selector */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* this stops box borders and padding being added to the total width or height that we specify for a box*/
-}
-/* tergeting the body element styles works better for inheritance */
-body {
-  font-family: "Lato", sans-serif; /* set the dont to 'Lato' or sans-serif if Lato isn't available */
-  font-weight: 400; /* this is one of the options available on the Google font we've included in the HTML head*/
-  font-size: 16px;
-  line-height: 1.7; /* this sets line-height to 1.7 times bigger than the defualt line-height */
-  color: #3d3d3d;
-  padding: 30px; /* adds a 30px padding to the eintire body of the web page */
-}
-.header {
-  height: 95vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.7),
-      rgba(40, 180, 133, 0.7)
-    ),
-    url("../img/hero.jpg");
-  background-size: cover; /* cover fits the image inside the element */
-  background-position: top; /* this ensures the image always stays at the top of the element - so when resizing the top remains at the top */
-  position: relative; /* we've set this to relative as it's the parent element to our div containing the logo */
+  box-sizing: inherit; }
 
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
-.logo-box {
-  position: absolute;
-  top: 40px; /* this is relative to the parent element, the parent element needs the style position: relative; */
-  left: 40px; /* this is relative to the parent element, the parent element needs the style position: relative; */
-}
-.logo {
-  height: 35px; /* setting the height and not the width lets the browser figure out the width to keep the proportions of the image*/
-}
-.text-box {
-  position: absolute;
-  top: 40%; /* this moves the top of the current element and places it 50% from the top of its parent element | we've set it tp 40% here to make it easier on the eye with the wedge we've got in place */
-  left: 50%; /* this moves the left of the current element and places it 50% from the left of its parent element */
-  /* background-color: red; */
-  transform: translate(-50%, -50%); /* this moves the element back and up 50% to counter the issues with top and left 50% */
-  text-align: center;
-}
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
+  backface-visibility: hidden; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3.5rem;
+    animation: moveInLeft 1.5s ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 1.5s ease-out; }
 
-  backface-visibility: hidden; /* fixes shaking issue with some animations | don't use when background moves as part of the animation */
-}
-.heading-primary-main {
-  display: block;
-  font-size: 60px;
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 35px;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all 0.2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
-  animation: moveInLeft 1.5s ease-out;
-}
-.heading-primary-sub {
-  display: block;
-  font-size: 20px;
+.heading-tertiary {
+  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  text-transform: uppercase; }
 
-  animation: moveInRight 1.5s ease-out;
-}
-@keyframes moveInLeft { /* you can name this what you like */
-  0% { /* start at 0%, the start of the animation */
-    opacity: 0; /* start the animation invisible */
-    transform: translateX(-100px); /*translateX to move it along the X (side) axis | a negative value to start it moving from the left */
-  }
-  80% { /* end at 100%, the end of the animation s*/
-    opacity: 1; /* by the end the animation visible */
-    transform: translate(10px); /* tanslate 0 to move it back to it's original position */
-  }
-  100% { /* end at 100%, the end of the animation s*/
-    opacity: 1; /* by the end the animation visible */
-    transform: translate(0); /* tanslate 0 to move it back to it's original position */
-  }
-}
-@keyframes moveInRight { /* you can name this what you like */
-  0% { /* start at 0%, the start of the animation */
-    opacity: 0; /* start the animation invisible */
-    transform: translateX(100px); /*translateX to move it along the X (side) axis | a negative value to start it moving from the left */
-  }
-  80% { /* end at 100%, the end of the animation s*/
-    opacity: 1; /* by the end the animation visible */
-    transform: translate(-10px); /* tanslate 0 to move it back to it's original position */
-  }
-  100% { /* end at 100%, the end of the animation s*/
-    opacity: 1; /* by the end the animation visible */
-    transform: translate(0); /* tanslate 0 to move it back to it's original position */
-  }
-}
-@keyFrames moveInBottom {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.btn:link,  /* :link is a pseudo class | a state for a tags */
-.btn:visited { /* :visited is a pseudo class after a link has been clicked by the user | here we want it to stay the same after being clicked */
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
-  display: inline-block; /* always add this if you want to give, height, width or padding to an element */
-  border-radius: 100px;
-  transition: all .2s;
-  position: relative;
-}
+  padding: 1.5rem 4rem;
+  font-size: 1.6rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative; }
+
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 3px 20px rgba(0,0,0,0.4); /* x shadow, y shadow, blur, colour */
-}
-.btn:active { /* the :active pseudo class is when the element is clicked */
-  transform: translateY(-1px); /* this isn't relateed to the hover state, it's related to the initial state, so -1px is less than -3px so it moves down */
-  box-shadow: 0 1px 10px rgba(0,0,0,0.4); /* x shadow, y shadow, blur, colour*/
-}
-.btn-white {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0.3rem 2rem rgba(0, 0, 0, 0.4); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.4); }
+
+.btn--white {
   background-color: #fff;
-  color: #3d3d3d;
-}
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
 .btn::after {
   content: "";
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
-  position: absolute; /* for this to work we need to add 'position: relative;' to the button */
+  border-radius: 10rem;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s;
-}
-.btn-white::after {
-  background-color: #FFF;
-}
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; /* this is the best way to fade things out */
-}
-.btn-animated {
-  animation: moveInBottom 1.5s ease-out .75s;
-  animation-fill-mode: backwards;
-}
+  transition: all 0.4s; }
+
+.btn--animated {
+  animation: moveInBottom 1.5s ease-out 0.75s;
+  animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all 0.2s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.composition__photo {
+  width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  border-radius: 2px; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.7), rgba(40, 180, 133, 0.7)), url("../img/hero.jpg");
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+.row {
+  max-width: 144rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+.section-about {
+  background-color: #f7f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }
