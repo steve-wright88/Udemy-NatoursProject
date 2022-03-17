@@ -1,0 +1,61 @@
+.story {
+  width: 75%;
+  margin: 0 auto; // we can use this to center it as it's a block element inside of a block element
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  // & > * targets everything that is a child elemene of .story | this doesnt work because you can't have 2 transforms at the same time - "transform: translateX(-3rem)"
+  // & > * {
+  //   transform: skewX(12deg);
+  // }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    // this is a better way of adding "margin" with floated elements
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+  }
+
+  &__img {
+    height: 100%; // this sets the image 100% of the parent element | height because the image is wider than it is high
+    transform: translateX(-3rem) scale(1.4);
+    transition: all 0.5s;
+  }
+  &__text {
+    transform: skewX(12deg);
+  }
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0; // here we're hiding the caption until it is hovered
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  &:hover &__img {
+    transform: translateX(-3rem) scale(1);
+    filter: blur(3px) brightness(75%);
+  }
+}

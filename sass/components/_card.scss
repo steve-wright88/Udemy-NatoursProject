@@ -1,0 +1,175 @@
+// Functionality
+.card {
+  // here we pass styles that we want to apply to every card
+  perspective: 150rem; // this needs a large number of pixels to work | a low number makes it look weird and a bit "3D"
+  -moz-perspective: 150rem; // this makes it work in firefox
+  position: relative; // this is set so we can use 'position: absolute' below
+  height: 52rem;
+  &__side {
+    height: 52rem; // eight os the card - same as is set on every card above
+    transition: all 0.8s ease; // set the way the transform is transitioned that we've set below
+    position: absolute;
+    top: 0; // position the card to start at the top of its parent element
+    left: 0; // position the card to start to the left of its parent element
+    width: 100%;
+    backface-visibility: hidden; // this hides the backpart of an element, meaning we won't see the text through the back the card
+    border-radius: 8px;
+    overflow: hidden; // set this becuase the image on the card is overflowing the rounded corners we've set with border-radius: ;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+    &--back {
+      transform: rotateY(-180deg);
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiarty-light,
+          $color-tertiarty-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    // we hover the card then we want the card__side to be transformed
+    transform: rotateY(180deg);
+  }
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+  // Front side styling
+  &__picture {
+    background-size: cover; // doing this here to effect all 3 images
+    height: 23rem;
+    background-blend-mode: screen; // there are many blend modes available to blend a gradient to a picture
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    // here we're creating the diagonal line effect using clip-path
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    // the order starts in the top left corner, then 100% in the X direction and 0 in the Y direction
+    // then 100% in the Y direction but only 85% of the way down in the X direction
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(/img/nat-5.jpg);
+    }
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(/img/nat-6.jpg);
+    }
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiarty-light,
+          $color-tertiarty-dark
+        ),
+        url(/img/nat-7.jpg);
+    }
+  }
+
+  &__heading {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute; // this because we want the text to be on top of the image
+    top: 19rem; // needs positioning with top when using 'position: absolute;'
+    right: 1rem; // also needs positioning with left when using 'position: absolute;'
+    width: 75%;
+  }
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone; // this makes text on two lines be treates as seperate elements | doesn't work on chrome without the -webkit prefix
+    box-decoration-break: clone; // this makes text on two lines be treates as seperate elements
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiarty-light, 0.85),
+        rgba($color-tertiarty-dark, 0.85)
+      );
+    }
+  }
+  &__details {
+    padding: 3rem;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; // this is a good way to center block elements | margin top and bottom 0 the left and right auto
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $colour-grey-light-2;
+        }
+      }
+    }
+  }
+  // Front side Styling
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+    color: $color-white;
+  }
+  &__price-only {
+    font-size: 1.4rem !important;
+    text-transform: uppercase;
+  }
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 100;
+  }
+}

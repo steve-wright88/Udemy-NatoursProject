@@ -10,6 +10,7 @@
   background-position: top; // this ensures the image always stays at the top of the element - so when resizing the top remains at the top
   position: relative; // we've set this to relative as it's the parent element to our div containing the logo
 
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   &__logo-box {

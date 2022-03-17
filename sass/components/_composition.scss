@@ -7,7 +7,8 @@
     position: absolute;
     z-index: 10;
     transition: all 0.2s;
-    outline-offset: 2rem;
+
+    // outline-offset: 2rem; // this sets how far the outline is from the image
 
     &--p1 {
       left: 0;
@@ -23,13 +24,14 @@
     }
 
     &:hover {
-      outline: 1.5rem solid $color-primary;
+      // outline: 1.5rem solid $color-primary; // this is the border around the images
       transform: scale(1.05) translateY(-0.05rem);
       box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
       z-index: 20;
+      transform: scale(1.25);
     }
   }
   &:hover &__photo:not(:hover) {
-    transform: scale(0.95);
+    transform: scale(0.85);
   }
 }
